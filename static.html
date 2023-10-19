@@ -23,48 +23,48 @@
         <img src="images/iso-elecciones.svg" alt="Elecciones 2023">
       </div>
       <div class="candidatos">
-        <div class="candidato" data-party="135">
+        <div class="candidato">
           <div class="canditato__pic">
             <img src="images/milei.png" alt="Milei">
           </div>
           <div class="candidato__datos">
-            <h3></h3>
+            <h3>12,34%</h3>
             <h2>Milei</h2>
           </div>
         </div>
-        <div class="candidato" data-party="134">
+        <div class="candidato">
           <div class="canditato__pic">
             <img src="images/massa.png" alt="Massa">
           </div>
-          <div class="candidato__datos" title="Un">
-            <h3></h3>
+          <div class="candidato__datos">
+            <h3>12,34%</h3>
             <h2>Massa</h2>
           </div>
         </div>
-        <div class="candidato" data-party="132">
+        <div class="candidato">
           <div class="canditato__pic">
             <img src="images/bullrich.png" alt="Bullrich">
           </div>
           <div class="candidato__datos">
-            <h3></h3>
+            <h3>12,34%</h3>
             <h2>Bullrich</h2>
           </div>
         </div>
-        <div class="candidato" data-party="136">
+        <div class="candidato">
           <div class="canditato__pic">
             <img src="images/bregman.png" alt="Bregman">
           </div>
           <div class="candidato__datos">
-            <h3></h3>
+            <h3>12,34%</h3>
             <h2>Bregman</h2>
           </div>
         </div>
-        <div class="candidato" data-party="133">
+        <div class="candidato">
           <div class="canditato__pic">
             <img src="images/schiaretti.png" alt="Schiaretti">
           </div>
           <div class="candidato__datos">
-            <h3></h3>
+            <h3>12,34%</h3>
             <h2>Schiaretti</h2>
           </div>
         </div>
@@ -72,34 +72,6 @@
     </div>
   </section>
 
-  <script>
-    function fetchData () {
-      return fetch('https://data-ecp.clarin.com/clarin.com/2023/argentina/general/AR_president.json')
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          handleData(data);
-        })
-        .catch(error => console.log('There was a problem with the fetch operation:', error.message));
-    }
-
-    function handleData (data) {
-      let canditatos = data.parties;
-      console.log('Parties:', canditatos);
-      // { 132: JXC, 133:HXNP, 134:UXLP, 135:LLA, 136: FIT}
-      canditatos.map(function (canditato) {
-        document.querySelector(`[data-party="${canditato.party_id}"] img`).setAttribute('title', `${canditato.name}`);
-        document.querySelector(`[data-party="${canditato.party_id}"] h3`).setAttribute('title', `${canditato.short_name}`);
-        document.querySelector(`[data-party="${canditato.party_id}"] h3`).innerHTML = `${canditato.votes_percent}`;
-      });
-    }
-
-    fetchData();
-  </script>
 </body>
 
 </html>
